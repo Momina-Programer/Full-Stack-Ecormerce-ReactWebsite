@@ -87,8 +87,12 @@ const handleAddToCart = () => {
 
   return (
     <>
+  
       <Navbar />
-      <section className='container mx-auto px-4 py-8'>
+
+   
+  
+      <section className='container mx-auto px-4 py-8 ]' >
         <div className='max-w-6xl mx-auto bg-white rounded-lg shadow-xl overflow-hidden cssanimation fadeInBottom'>
           <div className='md:flex'>
             {/* Product Image Section */}
@@ -154,6 +158,8 @@ const handleAddToCart = () => {
           </div>
         </div>
       </section>
+
+  
       <Footer />
     </>
   )

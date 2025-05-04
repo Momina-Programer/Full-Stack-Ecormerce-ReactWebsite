@@ -1,30 +1,118 @@
-import React from 'react'
-import { Link } from 'react-router'
-const Navbar = () => {
+import React, { useState } from "react"
+import { Link } from "react-router"
+
+
+export default function Navbar() {
+  const [isToggleOpen, setIsToggleOpen] = useState(false)
+
   return (
     <>
-      <section className='flex gap-10  border pt-[20px] pb-[30px] shadow-lg'>
-        <h1 className='text-[40px] ml-[20px] font-bold cssanimation  leFadeInLeft sequence'>
-          Sopify
-        </h1>
-
-        <input
-          className='bg-zinc-200 ml-20 text-zinc-600 font-mono ring-1 ring-zinc-400 focus:ring-2 focus:ring-rose-400 outline-none duration-300 placeholder:text-zinc-600 placeholder:opacity-50 rounded-full px-4 py-2 w-[500px] shadow-md focus:shadow-lg focus:shadow-rose-400 dark:shadow-md dark:shadow-purple-500'
-          autocomplete='off'
-          placeholder='Search here...'
-          name='text'
-          type='text'
-        />
-
-      <Link to='/'>  <span className='ml-[30%] text-[20px] font-bold'> Products</span> </Link> 
+   
      
-     <Link to='/cart'>CartPage</Link>
 
-        {/* Cart icon */}
-        {/* <svg className='mt-5' xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#8C1A10"><path d="M284.53-80.67q-30.86 0-52.7-21.97Q210-124.62 210-155.47q0-30.86 21.98-52.7Q253.95-230 284.81-230t52.69 21.98q21.83 21.97 21.83 52.83t-21.97 52.69q-21.98 21.83-52.83 21.83Zm400 0q-30.86 0-52.7-21.97Q610-124.62 610-155.47q0-30.86 21.98-52.7Q653.95-230 684.81-230t52.69 21.98q21.83 21.97 21.83 52.83t-21.97 52.69q-21.98 21.83-52.83 21.83ZM238.67-734 344-515.33h285.33l120-218.67H238.67ZM206-800.67h589.38q22.98 0 34.97 20.84 11.98 20.83.32 41.83L693.33-490.67q-11 19.34-28.87 30.67-17.87 11.33-39.13 11.33H324l-52 96h487.33V-286H278q-43 0-63-31.83-20-31.84-.33-68.17l60.66-111.33-149.33-316H47.33V-880h121.34L206-800.67Zm138 285.34h285.33H344Z"/></svg> */}
-      </section>
+      {/*<!-- Header --> */}
+
+
+      <header className="shadow-lg shadow-gray-950  z-20 w-full border-b  fixed border-black bg-black/90  after:absolute after:left-0 after:top-full after:z-10 after:block after:h-px after:w-full after:bg-black lg:border-black lg:backdrop-blur-sm lg:after:hidden">
+        <div className="relative mx-auto max-w-full px-6 lg:max-w-5xl xl:max-w-7xl 2xl:max-w-[96rem]">
+          <nav
+            aria-label="main navigation"
+            className="flex h-[5.5rem] items-stretch justify-between font-medium  text-white"
+            role="navigation"
+          >
+            {/*      <!-- Brand logo --> */}
+            <a className="mt-[25px] text-[30px] font-bold">
+              
+              
+               
+            Shopify
+            </a>
+            {/*      <!-- Mobile trigger --> */}
+            <button
+              className={`relative order-10 block h-10 w-10 self-center lg:hidden
+                ${
+                  isToggleOpen
+                    ? "visible opacity-100 [&_span:nth-child(1)]:w-6 [&_span:nth-child(1)]:translate-y-0 [&_span:nth-child(1)]:rotate-45 [&_span:nth-child(2)]:-rotate-45 [&_span:nth-child(3)]:w-0 "
+                    : ""
+                }
+              `}
+              onClick={() => setIsToggleOpen(!isToggleOpen)}
+              aria-expanded={isToggleOpen ? "true" : "false"}
+              aria-label="Toggle navigation"
+            >
+              <div className="absolute left-1/2 top-1/2 w-6 -translate-x-1/2 -translate-y-1/2 transform">
+                <span
+                  aria-hidden="true"
+                  className="absolute block h-0.5 w-9/12 -translate-y-2 transform rounded-full bg-slate-900 transition-all duration-300"
+                ></span>
+                <span
+                  aria-hidden="true"
+                  className="absolute block h-0.5 w-6 transform rounded-full bg-slate-900 transition duration-300"
+                ></span>
+                <span
+                  aria-hidden="true"
+                  className="absolute block h-0.5 w-1/2 origin-top-left translate-y-2 transform rounded-full bg-slate-900 transition-all duration-300"
+                ></span>
+              </div>
+            </button>
+            {/*      <!-- Navigation links --> */}
+            <ul
+              role="menubar"
+              aria-label="Select page"
+              className={`absolute left-0 top-0 z-[-1] h-[28.5rem] w-full justify-center overflow-hidden  overflow-y-auto overscroll-contain bg-white/90 px-8 pb-12 pt-24 font-medium transition-[opacity,visibility] duration-300 lg:visible lg:relative lg:top-0  lg:z-0 lg:flex lg:h-full lg:w-auto lg:items-stretch lg:overflow-visible lg:bg-white/0 lg:px-0 lg:py-0  lg:pt-0 lg:opacity-100 text-white ${
+                isToggleOpen
+                  ? "visible opacity-100 backdrop-blur-sm"
+                  : "invisible opacity-0"
+              }`}
+            >
+              <li role="none" className="flex items-stretch">
+                <Link to='/'
+                  role="menuitem"
+                  aria-haspopup="false"
+                  className="flex items-center gap-2 py-4 hover:text-red-300   transition duration-300 ease-in-out focus-visible:outline-none lg:px-8 text-xl" 
+                  href="javascript:void(0)"
+                >
+                  <span>Home</span>
+                </Link>
+              </li>
+              <li role="none" className="flex items-stretch">
+                <Link to='/product'
+                  role="menuitem"
+                  aria-current="page"
+                  aria-haspopup="false"
+                  className="flex items-center gap-2 py-4 hover:text-red-300   transition duration-300 ease-in-out  focus-visible:outline-none lg:px-8 text-xl"
+                  href="javascript:void(0)"
+                >
+                  <span>Products</span>
+                </Link>
+              </li>
+              <li role="none" className="flex items-stretch">
+                <Link to='/cart'
+                  role="menuitem"
+                  aria-haspopup="false"
+                  className="flex items-center gap-2 py-4 hover:text-red-300   transition duration-300 ease-in-out focus:outline-none focus-visible:outline-none lg:px-8 text-xl"
+                  href="javascript:void(0)"
+                >
+                  <span>Cart</span>
+                </Link>
+              </li>
+            </ul>
+           
+           
+          </nav>
+        </div>
+      </header>
+
+
+
+      
+
+
+
+  
+
+
+      {/*<!-- End Navbar with Topbar--> */}
     </>
   )
 }
-
-export default Navbar
